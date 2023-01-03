@@ -6,7 +6,8 @@
         <input type="text" placeholder="Ask me a question" v-model="question">
         <p>Remember to finish your question with a cuote mark (?)</p>
 
-        <div v-if="isValidQuestion">
+        <!-- <div v-if="isValidQuestion"> -->
+        <div>
             <h2> {{question}}</h2>
             <h1>{{answer}}</h1>
         </div>
