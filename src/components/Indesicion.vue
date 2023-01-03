@@ -46,6 +46,7 @@ export default {
         const { answer, image } = await peticion.json();
         this.img = image;
         this.answer = answer;
+        // this.question = "";
       } catch (error) {
         console.log(error.message);
       }
