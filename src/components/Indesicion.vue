@@ -9,6 +9,7 @@
         <div v-if="isValidQuestion">
             <h2> {{question}}</h2>
             <h1>{{answer}}</h1>
+            <!-- <h1>{{answer === 'yes' ? "Si" : "No"}}</h1> -->
         </div>
     </div>
 </template>
@@ -19,20 +20,19 @@ export default {
     return {
       question: null,
       answer: null,
-      img: this.image,
-      isValidQuestion: true,
+      img: null, //this.image,
+      isValidQuestion: false,
     };
   },
   watch: {
     question(newQuestion, oldQuestion) {
       //   console.log("newQuestion", newQuestion);
       //   this.question = newQuestion;
-      //   isValidQuestion = false;
-      if (!newQuestion.includes("?")) {
-        return;
-      }
+      this.isValidQuestion = false;
+      if (!newQuestion.includes("?")) return;
+
       //   realizar peticion http
-      //   isValidQuestion = true;
+      this.isValidQuestion = true;
       return this.getAnswer();
     },
   },
@@ -45,6 +45,7 @@ export default {
         const { answer, image } = await peticion.json();
         this.img = image;
         this.answer = answer;
+        // this.answer = answer === "yes" ? "Si" : "No";
       } catch (error) {
         console.log(error.message);
       }
