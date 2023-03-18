@@ -7,7 +7,7 @@
         <p>Remember to finish your question with a cuote mark (?)</p>
 
         <!-- <div v-if="isValidQuestion"> -->
-        <div>
+        <div v-if="isValidQuestion">
             <h2> {{question}}</h2>
             <h1>{{answer}}</h1>
             <!-- <h1>{{answer === 'yes' ? "Si" : "No"}}</h1> -->
@@ -46,7 +46,7 @@ export default {
         const { answer, image } = await peticion.json();
         this.img = image;
         this.answer = answer;
-        this.question = "";
+        // this.question = "";
         // this.answer = answer === "yes" ? "Si" : "No";
       } catch (error) {
         console.log(error.message);
